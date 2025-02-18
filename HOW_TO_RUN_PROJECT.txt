@@ -1,0 +1,34 @@
+1. Configure MongoDB
+
+Open the project.ipynb file.
+Locate the connection string or port settings for MongoDB.
+Update the MongoDB connection parameters (host, port, credentials) to match your local or remote MongoDB setup.
+
+2. Run the Data Collection Notebook
+
+Launch Jupyter Notebook or JupyterLab.
+Open the project.ipynb file.
+Execute each cell in order. This will:
+Retrieve airport information for the default country (e.g., Italy).
+Fetch flight data (dates are also configurable in the notebook).
+Store the retrieved flight data into your MongoDB database.
+Optional: If you want to collect flight data for a different country or date range, update the relevant variables in the notebook before re-running the cells.
+
+3. Set Up and Run the API Server
+
+In a terminal, navigate to your project directory.
+Activate the pipenv virtual environment: "pipenv shell" run in terminal
+(If needed, install the dependencies with pipenv install.)
+Start the server by running: "python manage.py runserver"
+The API endpoints will now be available on your local machine (e.g., http://127.0.0.1:8000/).
+
+4. Retrieve Flight Information from the API
+
+You can fetch stored flight information by sending a GET request to the /flight/flight-prices/ endpoint. For example:
+GET http://127.0.0.1:8000/flight/flight-prices/?date=25-04-2025&city_departure=Rome&city_arrival=Milan
+
+Parameters:
+-date: The flight date in DD-MM-YYYY format (e.g., 25-04-2025).
+-city_departure: The departure city (e.g., Rome).
+-city_arrival: The arrival city (e.g., Milan).
+This endpoint will return flight details matching the specified date and city parameters, pulling data from the records you inserted or updated in the notebook steps above.
